@@ -1,0 +1,53 @@
+TITLE Sakina Razvi/The purpose of this program is to convert the
+;C++ (and accompanying) functions into x86 assembly language
+
+INCLUDE Irvine32.inc
+
+.data
+x equ DWORD PTR [ebp-4]
+total equ DWORD PTR [ebp-8]
+
+.code
+Function PROC							;int Function(int x)
+	push ebp
+	mov ebp,esp						
+	mov eax,[ebp + 8]
+	sub esp,8								
+
+	mov x, eax
+	mov total, 0						;int total = 0
+
+	whileLoop:
+		cmp x, 6						;while (x >= 6)
+		jl finish
+
+		mov eax, x						;x = (x / 3) - 2
+		mov edx, 0
+		mov ebx, 3
+		div ebx
+		sub eax, 2
+		mov x, eax
+
+		add total, eax					;total += x
+		jmp whileLoop
+
+	finish:
+
+	mov eax, total
+	mov esp, ebp
+	pop ebp
+	ret 4								;return total
+Function ENDP
+
+main PROC								;int main()
+	mov eax, 100756						;int eax = Function(100756);
+	push eax
+	call Function
+	call writeDec						;cout << eax << endl;
+	call crlf
+	call WaitMsg						;system("PAUSE")
+
+	ret 0								;return 0
+exit
+main ENDP
+END main
