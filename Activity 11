@@ -10,7 +10,7 @@ total equ DWORD PTR [ebp-8]
 
 .code
 Subtract PROC							;int Function(int x)
-	push ebp
+	push ebp						;It will push base pointer into stack
 	mov ebp,esp						
 	mov eax,[ebp + 8]
 	sub esp,8								
