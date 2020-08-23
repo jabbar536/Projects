@@ -1,5 +1,6 @@
 TITLE Sakina Razvi/The purpose of this program is to convert the
 ;C++ (and accompanying) functions into x86 assembly language
+;This program is basically calculating total using loop for a condition.
 
 INCLUDE Irvine32.inc
 
@@ -8,7 +9,7 @@ x equ DWORD PTR [ebp-4]
 total equ DWORD PTR [ebp-8]
 
 .code
-Function PROC							;int Function(int x)
+Subtract PROC							;int Function(int x)
 	push ebp
 	mov ebp,esp						
 	mov eax,[ebp + 8]
@@ -37,7 +38,7 @@ Function PROC							;int Function(int x)
 	mov esp, ebp
 	pop ebp
 	ret 4								;return total
-Function ENDP
+Subtract ENDP
 
 main PROC								;int main()
 	mov eax, 100756						;int eax = Function(100756);
