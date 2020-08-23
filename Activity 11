@@ -23,8 +23,8 @@ Function PROC							;int Function(int x)
 
 		mov eax, x						;x = (x / 3) - 2
 		mov edx, 0
-		mov ebx, 3
-		div ebx
+		mov ebx, 3						;ebx = 3
+		div ebx							
 		sub eax, 2
 		mov x, eax
 
@@ -41,7 +41,7 @@ Function ENDP
 
 main PROC								;int main()
 	mov eax, 100756						;int eax = Function(100756);
-	push eax
+	push eax						;push is used to store value in eax 
 	call Function
 	call writeDec						;cout << eax << endl;
 	call crlf
